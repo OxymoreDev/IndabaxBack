@@ -1,0 +1,101 @@
+﻿Id;Nom;NiveauEtude;Secteur;MetierVise;Localisation;Competences
+CAN001;Dieuveil Tchicaya;Bac+2;Hôtellerie - Restauration;Serveur;Ouesso;Encaissement, Communication, Relation client, Accueil
+CAN002;Syntyche Mabiala;Master;Conseil, Stratégie & Gestion des Ressources Humaines;Responsable RH;Dolisie;Recrutement, Leadership, Paie, Droit social
+CAN003;Syntyche Loussakou;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Fiscaliste;Dolisie;Comptabilité, Fiscalité, Droit
+CAN004;Syntyche Milandou;Bac;Conseil, Stratégie & Gestion des Ressources Humaines;Consultant RH;Dolisie;Recrutement, Formation, Paie
+CAN005;Belvina Bouanga;Licence;Transport, Logistique & Supply Chain;Gestionnaire de stock;Pointe-Noire;SAP, Organisation, Inventaire, Logistique
+CAN006;Dieuveil Nkouka;Licence;Hôtellerie - Restauration;Manager Hôtel;Dolisie;Budget, Planning, Service client
+CAN007;Prisca Zola;Bac+2;Hôtellerie - Restauration;Cuisinier;Pointe-Noire;Cuisine, Gestion des stocks, Travail en équipe
+CAN008;Dieuveil Makosso;Licence;Pétrole, Gaz & Hydrocarbures;Technicien Maintenance;Pointe-Noire;Mécanique, Sécurité, Diagnostic, Hydraulique
+CAN009;Christ Nkouka;Bac+2;Pétrole, Gaz & Hydrocarbures;Superviseur HSE;Dolisie;Sécurité, Normes, Audit, Formation
+CAN010;Syntyche Makosso;Bac+2;Pétrole, Gaz & Hydrocarbures;Technicien Maintenance;Brazzaville;Hydraulique, Mécanique, Diagnostic, Maintenance
+CAN011;Christ Mviri;Master;Transport, Logistique & Supply Chain;Gestionnaire de stock;Ouesso;SAP, Excel, Logistique, Organisation, Inventaire
+CAN012;Grace Zola;Master;Finance, Banque, Assurance, Comptabilité & Fiscalité;Fiscaliste;Ouesso;Comptabilité, Droit, Audit
+CAN013;Gloire Bouanga;Master;Hôtellerie - Restauration;Manager Hôtel;Ouesso;Planning, Budget, Management
+CAN014;Grace Mviri;Bac;Pétrole, Gaz & Hydrocarbures;Ingénieur Forage;Pointe-Noire;HSE, Pétrole, Anglais, Maintenance, Forage
+CAN015;Dieuveil Mviri;Licence;Informatique, Data, Télécommunications & Digital;Data Scientist;Dolisie;TensorFlow, Python, Pandas, Machine Learning, SQL
+CAN016;Dieuveil Mabiala;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Comptable senior;Pointe-Noire;Excel, Analyse financière, Comptabilité, Fiscalité, SAGE
+CAN017;Dieuveil Mabiala;Bac+2;Pétrole, Gaz & Hydrocarbures;Technicien Maintenance;Brazzaville;Sécurité, Maintenance, Hydraulique, Diagnostic, Mécanique
+CAN018;Exauce Nkouka;Licence;Informatique, Data, Télécommunications & Digital;Administrateur Système;Nkayi;Linux, Bash, Réseau, Cloud, Docker
+CAN019;Christ Mviri;Master;Hôtellerie - Restauration;Cuisinier;Pointe-Noire;Cuisine, Créativité, Travail en équipe, Hygiène
+CAN020;Grace Tchicaya;Bac+2;Transport, Logistique & Supply Chain;Gestionnaire de stock;Dolisie;Inventaire, Organisation, SAP, Excel, Logistique
+CAN021;Prisca Mviri;Bac;Finance, Banque, Assurance, Comptabilité & Fiscalité;Contrôleur de gestion;Brazzaville;Reporting, Excel, Budget, Analyse
+CAN022;Dieuveil Zola;Master;Transport, Logistique & Supply Chain;Coordonnateur logistique;Brazzaville;Transport, Excel, SAP
+CAN023;Arnaud Zola;Master;Finance, Banque, Assurance, Comptabilité & Fiscalité;Fiscaliste;Dolisie;Droit, Comptabilité, Déclarations
+CAN024;Marien Mabiala;Licence;Pétrole, Gaz & Hydrocarbures;Ingénieur Forage;Ouesso;Maintenance, Pétrole, HSE, Forage
+CAN025;Prisca Bouanga;Bac+2;Transport, Logistique & Supply Chain;Chauffeur;Dolisie;Ponctualité, Entretien véhicule, Permis
+CAN026;Gloire Milandou;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Contrôleur de gestion;Pointe-Noire;Power BI, Analyse, Excel, Reporting
+CAN027;Prisca Milandou;Master;Conseil, Stratégie & Gestion des Ressources Humaines;Consultant RH;Dolisie;Gestion RH, Paie, Communication
+CAN028;Exauce Tchicaya;Licence;Hôtellerie - Restauration;Cuisinier;Brazzaville;Travail en équipe, Créativité, Cuisine, Gestion des stocks, Hygiène
+CAN029;Exauce Nkouka;Bac+2;Conseil, Stratégie & Gestion des Ressources Humaines;Responsable RH;Pointe-Noire;Leadership, Droit social, Management, Paie, Recrutement
+CAN030;Dieuveil Zola;Licence;Pétrole, Gaz & Hydrocarbures;Superviseur HSE;Nkayi;Audit, HSE, Sécurité, Normes
+CAN031;Arnaud Mabiala;Bac+2;Finance, Banque, Assurance, Comptabilité & Fiscalité;Contrôleur de gestion;Ouesso;Reporting, Budget, Power BI, Analyse, Excel
+CAN032;Gloire Zola;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Comptable senior;Ouesso;Excel, SAGE, Fiscalité, Analyse financière
+CAN033;Syntyche Bouanga;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Contrôleur de gestion;Brazzaville;Excel, Reporting, Power BI, Budget, Analyse
+CAN034;Prisca Nkouka;Master;Informatique, Data, Télécommunications & Digital;Administrateur Système;Pointe-Noire;Cloud, Docker, Bash, Linux, Réseau
+CAN035;Arnaud Zola;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Comptable senior;Brazzaville;Analyse financière, Excel, SAGE, Fiscalité
+CAN036;Arnaud Zola;Bac+2;Conseil, Stratégie & Gestion des Ressources Humaines;Consultant;Pointe-Noire;Communication, Analyse, Gestion de projet, Stratégie
+CAN037;Grace Nkouka;Licence;Informatique, Data, Télécommunications & Digital;Administrateur Système;Pointe-Noire;Bash, Cloud, Linux, Docker
+CAN038;Belvina Mviri;Bac+2;Pétrole, Gaz & Hydrocarbures;Technicien Maintenance;Pointe-Noire;Hydraulique, Diagnostic, Mécanique
+CAN039;Marien Kongo;Bac;Transport, Logistique & Supply Chain;Chauffeur;Ouesso;Sécurité, Ponctualité, Entretien véhicule, Conduite
+CAN040;Syntyche Kongo;Bac+2;Informatique, Data, Télécommunications & Digital;Data Analyst;Nkayi;Excel, Power BI, SQL, Python, Statistiques
+CAN041;Exauce Loussakou;Bac;Transport, Logistique & Supply Chain;Gestionnaire de stock;Pointe-Noire;Inventaire, Excel, Organisation, SAP, Logistique
+CAN042;Belvina Zola;Bac+2;Hôtellerie - Restauration;Serveur;Pointe-Noire;Encaissement, Relation client, Service
+CAN043;Belvina Bouanga;Master;Transport, Logistique & Supply Chain;Gestionnaire de stock;Ouesso;Inventaire, SAP, Logistique
+CAN044;Syntyche Bouanga;Bac;Transport, Logistique & Supply Chain;Coordonnateur logistique;Pointe-Noire;SAP, Supply Chain, Planification, Transport
+CAN045;Marien Makosso;Bac+2;Pétrole, Gaz & Hydrocarbures;Ingénieur Forage;Brazzaville;Forage, Pétrole, Anglais, Maintenance, HSE
+CAN046;Dieuveil Bouanga;Bac;Finance, Banque, Assurance, Comptabilité & Fiscalité;Contrôleur de gestion;Nkayi;Budget, Excel, Reporting, Analyse
+CAN047;Marien Mabiala;Bac+2;Hôtellerie - Restauration;Chef de salle;Brazzaville;Service client, Communication, Organisation
+CAN048;Grace Zola;Bac+2;Transport, Logistique & Supply Chain;Coordonnateur logistique;Brazzaville;Supply Chain, Transport, Excel, SAP
+CAN049;Gloire Kongo;Master;Finance, Banque, Assurance, Comptabilité & Fiscalité;Comptable senior;Brazzaville;Excel, Analyse financière, Fiscalité, SAGE, Comptabilité
+CAN050;Marien Kongo;Master;Finance, Banque, Assurance, Comptabilité & Fiscalité;Comptable senior;Ouesso;SAGE, Comptabilité, Fiscalité, Analyse financière, Excel
+CAN051;Belvina Bouanga;Bac;Hôtellerie - Restauration;Serveur;Ouesso;Relation client, Encaissement, Service
+CAN052;Prisca Milandou;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Contrôleur de gestion;Pointe-Noire;Budget, Analyse, Power BI
+CAN053;Christ Bouanga;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Comptable senior;Pointe-Noire;Fiscalité, Analyse financière, SAGE, Comptabilité, Excel
+CAN054;Belvina Makosso;Bac;Finance, Banque, Assurance, Comptabilité & Fiscalité;Comptable senior;Dolisie;SAGE, Analyse financière, Excel, Fiscalité, Comptabilité
+CAN055;Syntyche Kongo;Bac;Transport, Logistique & Supply Chain;Chauffeur;Dolisie;Entretien véhicule, Permis, Sécurité
+CAN056;Belvina Kongo;Licence;Informatique, Data, Télécommunications & Digital;Développeur Front-End;Pointe-Noire;React, JavaScript, TypeScript, HTML
+CAN057;Christ Mabiala;Bac;Transport, Logistique & Supply Chain;Gestionnaire de stock;Pointe-Noire;Organisation, Excel, Logistique, SAP, Inventaire
+CAN058;Belvina Milandou;Bac+2;Finance, Banque, Assurance, Comptabilité & Fiscalité;Contrôleur de gestion;Pointe-Noire;Reporting, Analyse, Budget
+CAN059;Marien Makosso;Master;Transport, Logistique & Supply Chain;Coordonnateur logistique;Pointe-Noire;Planification, Excel, Supply Chain, Transport, SAP
+CAN060;Exauce Loussakou;Licence;Informatique, Data, Télécommunications & Digital;Développeur Front-End;Ouesso;TypeScript, CSS, HTML, React
+CAN061;Arnaud Tchicaya;Master;Transport, Logistique & Supply Chain;Coordonnateur logistique;Ouesso;Supply Chain, Planification, Transport, Excel
+CAN062;Syntyche Tchicaya;Bac;Pétrole, Gaz & Hydrocarbures;Ingénieur Forage;Nkayi;Pétrole, HSE, Forage, Maintenance, Anglais
+CAN063;Belvina Nkouka;Bac+2;Finance, Banque, Assurance, Comptabilité & Fiscalité;Fiscaliste;Nkayi;Comptabilité, Fiscalité, Audit, Droit, Déclarations
+CAN064;Marien Mabiala;Licence;Transport, Logistique & Supply Chain;Gestionnaire de stock;Ouesso;Inventaire, Organisation, Excel, Logistique, SAP
+CAN065;Syntyche Makosso;Master;Transport, Logistique & Supply Chain;Chauffeur;Nkayi;Sécurité, Conduite, Ponctualité
+CAN066;Syntyche Mviri;Master;Transport, Logistique & Supply Chain;Coordonnateur logistique;Nkayi;Supply Chain, SAP, Excel, Transport
+CAN067;Syntyche Kongo;Bac+2;Informatique, Data, Télécommunications & Digital;Administrateur Système;Pointe-Noire;Réseau, Cloud, Bash, Docker, Linux
+CAN068;Exauce Bouanga;Master;Informatique, Data, Télécommunications & Digital;Administrateur Système;Brazzaville;Linux, Docker, Cloud, Bash
+CAN069;Exauce Milandou;Bac+2;Conseil, Stratégie & Gestion des Ressources Humaines;Consultant;Ouesso;Analyse, Stratégie, Gestion de projet, PowerPoint
+CAN070;Dieuveil Loussakou;Bac;Conseil, Stratégie & Gestion des Ressources Humaines;Consultant;Pointe-Noire;Analyse, Gestion de projet, Stratégie
+CAN071;Gloire Zola;Bac;Transport, Logistique & Supply Chain;Chauffeur;Dolisie;Permis, Ponctualité, Conduite, Entretien véhicule, Sécurité
+CAN072;Arnaud Makosso;Bac+2;Conseil, Stratégie & Gestion des Ressources Humaines;Responsable RH;Nkayi;Droit social, Recrutement, Paie, Management
+CAN073;Gloire Makosso;Licence;Pétrole, Gaz & Hydrocarbures;Technicien Maintenance;Pointe-Noire;Maintenance, Sécurité, Diagnostic, Hydraulique
+CAN074;Prisca Tchicaya;Bac;Hôtellerie - Restauration;Serveur;Pointe-Noire;Encaissement, Service, Relation client
+CAN075;Dieuveil Bouanga;Bac+2;Informatique, Data, Télécommunications & Digital;Administrateur Système;Pointe-Noire;Docker, Réseau, Bash, Cloud, Linux
+CAN076;Prisca Zola;Bac+2;Conseil, Stratégie & Gestion des Ressources Humaines;Responsable RH;Brazzaville;Droit social, Management, Leadership, Recrutement, Paie
+CAN077;Christ Zola;Master;Finance, Banque, Assurance, Comptabilité & Fiscalité;Fiscaliste;Pointe-Noire;Droit, Fiscalité, Audit, Déclarations, Comptabilité
+CAN078;Belvina Bouanga;Master;Pétrole, Gaz & Hydrocarbures;Superviseur HSE;Pointe-Noire;Normes, HSE, Formation, Audit
+CAN079;Exauce Kongo;Licence;Informatique, Data, Télécommunications & Digital;Développeur Front-End;Brazzaville;CSS, HTML, TypeScript, React
+CAN080;Prisca Milandou;Bac;Transport, Logistique & Supply Chain;Chauffeur;Nkayi;Conduite, Sécurité, Ponctualité, Permis
+CAN081;Grace Mviri;Master;Conseil, Stratégie & Gestion des Ressources Humaines;Consultant RH;Pointe-Noire;Communication, Gestion RH, Formation, Recrutement, Paie
+CAN082;Prisca Nkouka;Licence;Pétrole, Gaz & Hydrocarbures;Superviseur HSE;Pointe-Noire;Normes, Sécurité, HSE
+CAN083;Exauce Zola;Master;Finance, Banque, Assurance, Comptabilité & Fiscalité;Contrôleur de gestion;Nkayi;Analyse, Excel, Reporting, Budget, Power BI
+CAN084;Arnaud Makosso;Bac;Pétrole, Gaz & Hydrocarbures;Ingénieur Forage;Brazzaville;Maintenance, Pétrole, Anglais
+CAN085;Marien Nkouka;Bac;Informatique, Data, Télécommunications & Digital;Administrateur Système;Ouesso;Linux, Cloud, Docker, Bash, Réseau
+CAN086;Belvina Tchicaya;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Contrôleur de gestion;Dolisie;Excel, Power BI, Budget, Reporting, Analyse
+CAN087;Prisca Zola;Licence;Informatique, Data, Télécommunications & Digital;Data Analyst;Pointe-Noire;Power BI, Excel, Statistiques, SQL
+CAN088;Marien Mabiala;Licence;Transport, Logistique & Supply Chain;Gestionnaire de stock;Ouesso;Organisation, Inventaire, Logistique, SAP, Excel
+CAN089;Belvina Loussakou;Bac;Pétrole, Gaz & Hydrocarbures;Technicien Maintenance;Ouesso;Diagnostic, Sécurité, Hydraulique, Maintenance
+CAN090;Arnaud Kongo;Licence;Finance, Banque, Assurance, Comptabilité & Fiscalité;Fiscaliste;Nkayi;Droit, Comptabilité, Déclarations
+CAN091;Exauce Loussakou;Bac;Pétrole, Gaz & Hydrocarbures;Superviseur HSE;Nkayi;Formation, Normes, Sécurité, Audit
+CAN092;Gloire Loussakou;Licence;Hôtellerie - Restauration;Chef de salle;Nkayi;Service client, Communication, Gestion, Leadership, Organisation
+CAN093;Syntyche Nkouka;Bac+2;Hôtellerie - Restauration;Manager Hôtel;Dolisie;Leadership, Budget, Planning
+CAN094;Christ Loussakou;Bac+2;Hôtellerie - Restauration;Manager Hôtel;Dolisie;Planning, Budget, Management, Service client
+CAN095;Marien Mviri;Master;Conseil, Stratégie & Gestion des Ressources Humaines;Responsable RH;Ouesso;Droit social, Management, Paie, Leadership
+CAN096;Prisca Kongo;Master;Pétrole, Gaz & Hydrocarbures;Technicien Maintenance;Brazzaville;Diagnostic, Hydraulique, Mécanique, Maintenance
+CAN097;Arnaud Bouanga;Licence;Conseil, Stratégie & Gestion des Ressources Humaines;Responsable RH;Nkayi;Leadership, Recrutement, Paie, Management, Droit social
+CAN098;Dieuveil Nkouka;Licence;Conseil, Stratégie & Gestion des Ressources Humaines;Consultant;Dolisie;PowerPoint, Gestion de projet, Communication, Stratégie
+CAN099;Marien Makosso;Bac+2;Conseil, Stratégie & Gestion des Ressources Humaines;Responsable RH;Ouesso;Droit social, Management, Paie, Leadership, Recrutement
+CAN100;Grace Tchicaya;Bac+2;Informatique, Data, Télécommunications & Digital;Développeur Front-End;Pointe-Noire;TypeScript, HTML, JavaScript

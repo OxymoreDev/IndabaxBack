@@ -19,21 +19,30 @@ namespace WebApplication1.Features.Services
 
     public class EvaluationService
     {
-        public EvaluationMetrics Evaluate(List<MatchResult> predictions, List<GroundTruth> reality)
+        public EvaluationMetrics Evaluate(List<MatchResult> predictions, List<GroundTruth> realityRows)
         {
-            if (reality == null || !reality.Any())
+            if (realityRows == null || !realityRows.Any())
                 return new EvaluationMetrics { Status = "Fichier de vérité vide." };
 
             double sumPrecision = 0;
             double sumRecall = 0;
+            double sumNdcg5 = 0;
+            double sumNdcg10 = 0;
             int k = 5;
             int evaluatedCount = 0;
-            double sumNdcg5 = 0, sumNdcg10 = 0;
 
-            // 1. Nettoyage de la réalité
-            var realityMap = reality
+            // 1. On utilise GroupBy pour fusionner les lignes si un candidat apparaît plusieurs fois
+            var realityMap = realityRows
+                .Where(r => !string.IsNullOrEmpty(r.CandidateId))
                 .GroupBy(r => r.CandidateId.Trim().ToUpper())
-                .ToDictionary(g => g.Key, g => g.Select(x => x.JobId.Trim().ToUpper()).ToList());
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.SelectMany(r => new[] { r.JobId1, r.JobId2, r.JobId3 }) // On aplatit toutes les colonnes d'offres
+                          .Where(id => !string.IsNullOrWhiteSpace(id))
+                          .Select(id => id.Trim().ToUpper())
+                          .Distinct() // On enlève les doublons d'offres pour un même candidat
+                          .ToList()
+                );
 
             // 2. Groupement de tes prédictions
             var predictionsByCandidate = predictions
@@ -49,38 +58,26 @@ namespace WebApplication1.Features.Services
 
                 var predictedIds = group
                     .OrderByDescending(p => p.score)
-                    .Take(k)
                     .Select(p => p.job_id.Trim().ToUpper())
                     .ToList();
 
-                var hits = predictedIds.Intersect(trueJobIds).Count();
+                // Calcul des hits sur le Top 5
+                var top5 = predictedIds.Take(5).ToList();
+                var hits = top5.Intersect(trueJobIds).Count();
 
-                // CALCULS (Une seule fois chaque !)
                 sumPrecision += (double)hits / k;
-
-                if (trueJobIds.Count > 0)
-                {
-                    sumRecall += (double)hits / trueJobIds.Count;
-                }
-                
-                // CALCUL NDCG (Le coeur de l'évaluation du classement)
-                sumNdcg5 += CalculateNDCG(predictedIds.Take(5).ToList(), trueJobIds, 5);
+                sumRecall += (double)hits / trueJobIds.Count;
+                sumNdcg5 += CalculateNDCG(top5, trueJobIds, 5);
                 sumNdcg10 += CalculateNDCG(predictedIds.Take(10).ToList(), trueJobIds, 10);
-
-                // Debug console pour les 3 premiers
-                if (evaluatedCount <= 3)
-                {
-                    Console.WriteLine($"Cand {candId} | Hits: {hits} | TrueCount: {trueJobIds.Count}");
-                }
             }
 
             return new EvaluationMetrics
             {
                 TotalCandidatesEvaluated = evaluatedCount,
-                PrecisionAt5 = evaluatedCount > 0 ? Math.Round(sumPrecision / evaluatedCount, 4) : 0,
-                RecallAt5 = evaluatedCount > 0 ? Math.Round(sumRecall / evaluatedCount, 4) : 0, // <--- AJOUTÉ
-                NdcgAt5 = Math.Round(sumNdcg5 / evaluatedCount, 4),   // <--- AJOUTÉ
-                NdcgAt10 = Math.Round(sumNdcg10 / evaluatedCount, 4), // <--- AJOUTÉ
+                PrecisionAt5 = Math.Round(sumPrecision / evaluatedCount, 4),
+                RecallAt5 = Math.Round(sumRecall / evaluatedCount, 4),
+                NdcgAt5 = Math.Round(sumNdcg5 / evaluatedCount, 4),
+                NdcgAt10 = Math.Round(sumNdcg10 / evaluatedCount, 4),
                 Status = "Success"
             };
         }
@@ -104,12 +101,12 @@ namespace WebApplication1.Features.Services
             var list = csv.GetRecords<GroundTruth>().ToList();
 
             // DEBUG : Affiche dans la console pour vérifier
-            Console.WriteLine($"VÉRIF : Chargement de {list.Count} lignes de vérité. Première ligne : {list.FirstOrDefault()?.CandidateId} -> {list.FirstOrDefault()?.JobId}");
+            Console.WriteLine($"VÉRIF : Chargement de {list.Count} lignes de vérité. Première ligne : {list.FirstOrDefault()?.CandidateId} -> {list.FirstOrDefault()?.JobId1}");
 
             foreach (var row in list.Take(10))
             {
                 Console.WriteLine(
-                    $"Candidate={row.CandidateId}  Job={row.JobId}");
+                    $"Candidate={row.CandidateId}  Job={row.JobId1}");
             }
 
             return list;
@@ -139,10 +136,16 @@ namespace WebApplication1.Features.Services
 
     public class GroundTruth
     {
-        [Name("candidate_id")] // À ajuster selon les en-têtes du fichier jury
+        [Name("id_demandeur")]
         public string CandidateId { get; set; }
 
-        [Name("job_id")]
-        public string JobId { get; set; }
+        [Name("id_offre1")]
+        public string JobId1 { get; set; }
+
+        [Name("id_offre2")]
+        public string JobId2 { get; set; }
+
+        [Name("id_offre3")]
+        public string JobId3 { get; set; }
     }
 }

@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton<DataService>();
 builder.Services.AddSingleton<MatchEngine>();
 builder.Services.AddSingleton<EvaluationService>();
-builder.Services.AddSingleton<GroundTruthGeneratorService>();
 
 builder.Services.AddCors(options =>
 {
@@ -27,20 +26,16 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-//DataGenerator.GenerateFiles();
 
 
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var dataService = services.GetRequiredService<DataService>();
-    var gtGenerator = services.GetRequiredService<GroundTruthGeneratorService>();
 
     var candidates = dataService.GetCandidates();
     var offers = dataService.GetOffers();
 
-    // ON GÉNÈRE LA VÉRITÉ ICI
-    gtGenerator.Generate(candidates, offers);
 }
 //==========================================
 //BLOC DE TEST(À supprimer une fois validé)
@@ -100,8 +95,10 @@ if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseCors();
+
+
+app.UseAuthorization();
 
 app.MapControllers();
 

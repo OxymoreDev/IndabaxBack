@@ -1,6 +1,4 @@
 ﻿using Microsoft.ML;
-using Microsoft.ML.Data;
-using System.Text.RegularExpressions;
 using WebApplication1.Models;
 
 namespace WebApplication1.Features.Services
@@ -43,20 +41,22 @@ namespace WebApplication1.Features.Services
             _matchingService = new MatchingService();
         }
 
-      
+
+
+        
 
         public List<MatchResult> GetTopKMatches(List<Candidate> candidates, List<JobOffer> offers, int k = 5)
         {
-            var finalResults = new List<MatchResult>();
+            var finalResults = new System.Collections.Concurrent.ConcurrentBag<MatchResult>();
 
-            // 1. Pré-préparation des textes et des SETS de mots (pour l'explicabilité rapide)
-            var candidateTexts = candidates.Select(c => EnrichText($"{c.MetierVise} {c.Competences} {c.Secteur}")).ToList();
-            var offerTexts = offers.Select(o => EnrichText($"{o.Intitule} {o.Secteur}")).ToList();
+            // 1. Pré-préparation des textes (très rapide)
+            var candidateTexts = candidates.Select(c => EnrichText($"{(c.MetierVise ?? "")} {(c.QualificationMetier ?? "")}")).ToList();
+            var offerTexts = offers.Select(o => EnrichText($"{(o.Intitule ?? "")} {(o.Secteur ?? "")}")).ToList();
 
             var candidateWordSets = candidateTexts.Select(t => SimpleTokenize(t)).ToList();
             var offerWordSets = offerTexts.Select(t => SimpleTokenize(t)).ToList();
 
-            // 2. Transformation ML.NET (Batch unique)
+            // 2. Transformation ML.NET Batch (Une seule fois)
             var allData = candidateTexts.Concat(offerTexts).Select(t => new TextData { Text = t }).ToList();
             var dv = _mlContext.Data.LoadFromEnumerable(allData);
             var pipeline = _mlContext.Transforms.Text.FeaturizeText("Features", "Text");
@@ -64,57 +64,47 @@ namespace WebApplication1.Features.Services
             var transformed = model.Transform(dv);
             var allVectors = _mlContext.Data.CreateEnumerable<TransformedData>(transformed, false).ToList();
 
-            var candidateVectors = allVectors.Take(candidates.Count).ToList();
-            var offerVectors = allVectors.Skip(candidates.Count).ToList();
+            var candidateVectors = allVectors.Take(candidates.Count).Select(v => v.Features).ToList();
+            var offerVectors = allVectors.Skip(candidates.Count).Select(v => v.Features).ToList();
 
-            // 3. Boucle de Matching
-            for (int i = 0; i < candidates.Count; i++)
+            // 3. BOUCLE PARALLÈLE (Utilise 100% de ton CPU pour aller 8x plus vite)
+            Parallel.For(0, candidates.Count, i =>
             {
                 var matchesForCandidate = new List<MatchResult>();
-                var cVector = candidateVectors[i].Features;
+                var cVector = candidateVectors[i];
                 var cWords = candidateWordSets[i];
 
                 for (int j = 0; j < offers.Count; j++)
                 {
-                    var oVector = offerVectors[j].Features;
-                    double score = _matchingService.CalculateScore(cVector, oVector);
+                    // Calcul mathématique pur (Cosinus)
+                    double score = _matchingService.CalculateScore(cVector, offerVectors[j]);
 
-                    if (score > 0.05)
+                    if (score > 0.1)
                     {
-                        var oWords = offerWordSets[j];
                         matchesForCandidate.Add(new MatchResult
                         {
                             candidate_id = candidates[i].Id,
-                            candidate_name = candidates[i].Nom,
+                            candidate_name = candidates[i].Id,
                             job_id = offers[j].Id,
                             job_title = offers[j].Intitule,
                             company_name = offers[j].Entreprise,
                             score = Math.Round(score, 4),
-                            // ON REMPLIT LES LISTES ICI (C'est ce qui manquait !)
-                            common_skills = cWords.Intersect(oWords).ToList(),
-                            missing_skills = oWords.Except(cWords).Take(3).ToList()
+                            common_skills = cWords.Intersect(offerWordSets[j]).ToList(),
+                            missing_skills = offerWordSets[j].Except(cWords).Take(3).ToList()
                         });
                     }
                 }
 
-                var topK = matchesForCandidate
-            .OrderByDescending(m => m.score)
-            .GroupBy(m => m.job_id) // FIX BUG A : Supprime les doublons d'offres identiques
-            .Select(g => g.First())
-            .Select((m, index) =>
-            {
-                m.rank = index + 1; // FIX BUG B : On commence au Rang 1
-                return m;
-            })
-            .Take(k)
-            .ToList();
+                // On trie et on prend le Top K
+                var topK = matchesForCandidate.OrderByDescending(m => m.score)
+                                              .GroupBy(m => m.job_id).Select(g => g.First())
+                                              .Select((m, idx) => { m.rank = idx + 1; return m; })
+                                              .Take(k);
 
-                finalResults.AddRange(topK);
+                foreach (var m in topK) finalResults.Add(m);
+            });
 
-                finalResults.AddRange(topK);
-                finalResults.AddRange(topK);
-            }
-            return finalResults;
+            return finalResults.OrderBy(r => r.candidate_id).ThenBy(r => r.rank).ToList();
         }
 
         private string EnrichText(string input)

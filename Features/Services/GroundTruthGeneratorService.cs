@@ -34,24 +34,38 @@ namespace WebApplication1.Features.Services
             Console.WriteLine($"[VÉRITÉ TERRAIN] Fichier généré : {path}");
         }
 
+        
+
         private int CalculateHumanExpertScore(Candidate c, JobOffer o)
         {
             int score = 0;
 
-            // Règle 1 : Métier identique (Poids fort)
-            if (o.Intitule.Contains(c.MetierVise, StringComparison.OrdinalIgnoreCase) ||
-                c.MetierVise.Contains(o.Intitule, StringComparison.OrdinalIgnoreCase))
-                score += 60;
+            // On utilise l'opérateur ?? "" pour remplacer les nulls par du texte vide
+            string cMetier = c.MetierVise ?? "";
+            string oIntitule = o.Intitule ?? "";
+            string cSecteur = c.Secteur ?? "";
+            string oSecteur = o.Secteur ?? "";
+            string cLoc = c.Localisation ?? "";
+            string oLoc = o.Location ?? "";
 
-            // Règle 2 : Même Secteur (Poids moyen)
-            if (o.Secteur.Equals(c.Secteur, StringComparison.OrdinalIgnoreCase))
+            // 1. Match Métier (seulement si les deux ne sont pas vides)
+            if (!string.IsNullOrEmpty(cMetier) && !string.IsNullOrEmpty(oIntitule))
+            {
+                if (oIntitule.Contains(cMetier, StringComparison.OrdinalIgnoreCase) ||
+                    cMetier.Contains(oIntitule, StringComparison.OrdinalIgnoreCase))
+                    score += 60;
+            }
+
+            // 2. Match Secteur
+            if (!string.IsNullOrEmpty(cSecteur) && cSecteur.Equals(oSecteur, StringComparison.OrdinalIgnoreCase))
                 score += 30;
 
-            // Règle 3 : Localisation (Bonus)
-            if (o.Location.Equals(c.Localisation, StringComparison.OrdinalIgnoreCase))
+            // 3. Match Localisation
+            if (!string.IsNullOrEmpty(cLoc) && cLoc.Equals(oLoc, StringComparison.OrdinalIgnoreCase))
                 score += 10;
 
             return score;
         }
     }
 }
+

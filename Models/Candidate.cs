@@ -1,22 +1,31 @@
 ﻿using CsvHelper.Configuration.Attributes;
 
-namespace WebApplication1.Models
+public class Candidate
 {
-    public class Candidate
-    {
-        public string Id { get; set; }
-        public string Nom { get; set; } // ou ID anonyme
-        public string Competences { get; set; }
+    [Name("matricule")] // Sera "matricule" après nettoyage
+    public string Id { get; set; }
 
-        [Name("NiveauEtude")]
-        public string Education { get; set; }
-        public string MetierVise { get; set; }
-        public string Secteur { get; set; }
-         
-        [Name("Localisation")] //[Name("Localisation")] Mobilité
-        public string Localisation { get; set; }    
+    [Name("secteurdactivite")] // Correspond à "Secteur d'activité" nettoyé
+    public string Secteur { get; set; }
 
-        [Ignore] // <--- On dit à CsvHelper d'ignorer ce champ lors de la lecture du CSV
-        public float[]? Embedding { get; set; }
-    }
+    [Name("metiervisequalificationvisee")] // Correspond à "Métier visé / Qualification visée"
+    public string MetierVise { get; set; }
+
+    [Name("mobilitegeographique")] // Correspond à "Mobilité géographique"
+    public string Localisation { get; set; }
+
+    [Name("qualificationmetier")]
+    public string QualificationMetier { get; set; }
+
+    [Name("filierespecialite")]
+    public string Specialite { get; set; }
+
+    [Name("diplome")]
+    public string Education { get; set; }
+
+    [Ignore]
+    public string Nom { get; set; } = "Candidat";
+
+    [Ignore]
+    public string Competences => $"{QualificationMetier} {Specialite} {MetierVise}";
 }

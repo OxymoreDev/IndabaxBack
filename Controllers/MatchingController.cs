@@ -29,43 +29,7 @@ namespace WebApplication1.Controllers
             return Ok(results);
         }
 
-        //[HttpGet("search")]
-        //public ActionResult<List<MatchResult>> Search([FromQuery] string query, [FromQuery] int k = 5)
-        //{
-        //    var offers = _dataService.GetOffers();
-
-        //    // On crée un "Faux candidat" basé sur la recherche de l'utilisateur
-        //    var dummyCandidate = new Candidate
-        //    {
-        //        Id = "SEARCH",
-        //        Nom = "Recherche",
-        //        MetierVise = query,
-        //        Competences = "",
-        //        Secteur = ""
-        //    };
-
-        //    var results = _matchEngine.GetTopKMatches(new List<Candidate> { dummyCandidate }, offers, k);
-        //    return Ok(results);
-        //}
-
-        //[HttpGet("search")]
-        //public ActionResult<List<MatchResult>> Search([FromQuery] string query, [FromQuery] int k = 5)
-        //{
-        //    var offers = _dataService.GetOffers();
-
-        //    // On crée un candidat dont TOUT le profil est basé sur la recherche
-        //    var dummyCandidate = new Candidate
-        //    {
-        //        Id = "SEARCH",
-        //        Nom = "Résultat de recherche", // Plus propre que "Recherche"
-        //        MetierVise = query,
-        //        Competences = query, // On injecte la recherche ici aussi
-        //        Secteur = query      // Et ici
-        //    };
-
-        //    var results = _matchEngine.GetTopKMatches(new List<Candidate> { dummyCandidate }, offers, k);
-        //    return Ok(results);
-        //}
+        
 
         [HttpGet("search")]
         public ActionResult<List<MatchResult>> Search([FromQuery] string query, [FromQuery] int k = 5)
